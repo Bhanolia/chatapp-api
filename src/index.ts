@@ -6,6 +6,7 @@ import cookieParser from "cookie-parser";
 import cors from "cors";
 import dotenv from "dotenv";
 import mongoose, { Error } from "mongoose";
+import router from './routes';
 
 const app = express();
 dotenv.config();
@@ -27,3 +28,6 @@ mongoose.connect(process.env.MONGO);
 mongoose.connection.on('error', (error:Error) => {
   console.log(error);
 });
+
+
+app.use('/',router())
